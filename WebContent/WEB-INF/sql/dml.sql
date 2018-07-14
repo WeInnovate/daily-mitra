@@ -1,0 +1,1 @@
+INSERT INTO DM_LOGIN VALUES('admin', 'admin', 'ADMIN');
