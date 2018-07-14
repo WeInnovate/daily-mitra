@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebListener;
 import com.dailymitra.dao.LoginDao;
 import com.dailymitra.dao.LoginDaoImpl;
 import com.dailymitra.dao.ddl.DdlOperations;
+import com.dailymitra.dao.ddl.TableCreator;
 
 @WebListener
 public class MyServletContextListener implements ServletContextListener {
@@ -20,19 +21,13 @@ public class MyServletContextListener implements ServletContextListener {
 
 	public void contextInitialized(ServletContextEvent sce) {
 		ServletContext context = sce.getServletContext();
-		String isTableCreationRequired = context.getInitParameter("createTable");
-		if (isTableCreationRequired != null && isTableCreationRequired.equalsIgnoreCase("Yes")) {
-			DdlOperations ddlOperations = new DdlOperations();
-			boolean retVal = ddlOperations.createTable(
-					"CREATE TABLE DM_LOGIN( USERNAME VARCHAR PRIMARY KEY, PASSWORD VARCHAR, STATUS VARCHAR(50))");
-			String result = null;
-			result = retVal == true ? "Tables not created" : "Tables created";
-			System.out.println(result);
 
-			LoginDao loginDao = new LoginDaoImpl();
-			if (!loginDao.isExistingUser("admin")) {
-				loginDao.saveLogin("admin", "admin", "ADMIN");
-			}
+		String createTablesFilPath = context.getRealPath("WEB-INF//sql//create-tables.sql");
+		(new TableCreator()).createTable(createTablesFilPath);
+
+		LoginDao loginDao = new LoginDaoImpl();
+		if (!loginDao.isExistingUser("admin")) {
+			loginDao.saveLogin("admin", "admin", "ADMIN");
 		}
 	}
 
