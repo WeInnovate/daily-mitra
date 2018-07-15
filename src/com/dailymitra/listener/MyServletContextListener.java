@@ -7,7 +7,6 @@ import javax.servlet.annotation.WebListener;
 
 import com.dailymitra.dao.LoginDao;
 import com.dailymitra.dao.LoginDaoImpl;
-import com.dailymitra.dao.ddl.DdlOperations;
 import com.dailymitra.dao.ddl.TableCreator;
 
 @WebListener
