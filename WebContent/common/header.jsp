@@ -4,7 +4,7 @@
 <!-- header -->
 <div class="agileits_header">
 	<div class="w3l_offers">
-		<a href="products.html">Today's special Offers !</a>
+		<a href="products.jsp">Today's special Offers !</a>
 	</div>
 	<div class="w3l_search">
 		<form action="#" method="post">
@@ -40,7 +40,7 @@
 	</div>
 	<div class="w3l_header_right1">
 		<h2>
-			<a href="mail.html">Contact Us</a>
+			<a href="mail.jsp">Contact Us</a>
 		</h2>
 	</div>
 	<div class="clearfix"></div>
@@ -70,10 +70,10 @@
 		</div>
 		<div class="w3ls_logo_products_left1">
 			<ul class="special_items">
-				<li><a href="events.html">Events</a><i>/</i></li>
-				<li><a href="about.html">About Us</a><i>/</i></li>
-				<li><a href="products.html">Best Deals</a><i>/</i></li>
-				<li><a href="services.html">Services</a></li>
+				<li><a href="events.jsp">Events</a><i>/</i></li>
+				<li><a href="about.jsp">About Us</a><i>/</i></li>
+				<li><a href="products.jsp">Best Deals</a><i>/</i></li>
+				<li><a href="services.jsp">Services</a></li>
 			</ul>
 		</div>
 		<div class="w3ls_logo_products_left1">
@@ -81,7 +81,7 @@
 				<li><i class="fa fa-phone" aria-hidden="true"></i>(+0123) 234
 					567</li>
 				<li><i class="fa fa-envelope-o" aria-hidden="true"></i><a
-					href="mailto:store@grocery.com">store@grocery.com</a></li>
+					href="mailto:store@grocery.com">contact.dailymitra@gmail.com</a></li>
 			</ul>
 		</div>
 		<div class="clearfix"></div>
