@@ -13,7 +13,6 @@
     <param-name>createTable</param-name>
     <param-value>Yes</param-value>
   </context-param>
-  
   <context-param>
     <param-name>title</param-name>
     <param-value>Grocery Store | An online mitra for daily needs</param-value>

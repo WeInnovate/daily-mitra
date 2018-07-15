@@ -76,7 +76,7 @@
 		<div class="w3l_banner_nav_right">
 			<!-- login -->
 			<div class="w3_login">
-				<h3>Sign In & Sign Up</h3>
+				<h3>Verfiy Customer</h3>
 				<div class="w3_login_module">
 					<div class="module form-module">
 						<div class="toggle">
@@ -88,22 +88,11 @@
 							<i>${requestScope.msg}</i>
 							<form action="login" method="post">
 								<input type="text" name="username" placeholder="Enter Username"
-									required=" "> <input type="password" name="password"
-									placeholder="Enter Password" required=" "> <input
-									type="submit" value="Login">
+									required=" "> <input type="text" name="otp"
+									placeholder="Enter OTP" required=" "> 
+									<input type="submit" value="Verify">
 							</form>
 						</div>
-						<div class="form">
-							<h2>Create an account</h2>
-							<form action="customers/save" method="post">
-								<input type="text" name="username" placeholder="Username"
-									required=" "> <input type="password" name="password"
-									placeholder="Password" required=" "> <input
-									type="email" name="email" placeholder="Email Address"
-									required=" "> <input type="text" name="phone"
-									placeholder="Phone Number" required=" "> <input
-									type="submit" value="Register">
-							</form>
 						</div>
 						<div class="cta">
 							<a href="#">Forgot your password?</a>
