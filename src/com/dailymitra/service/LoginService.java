@@ -9,4 +9,10 @@ public interface LoginService {
 	boolean isExistingUser(String userName);
 	
 	String checkLogin(String userName, String password);
+	
+	String saveOTP (String userName,String OTP );
+	
+	boolean verifyOTP (String userName,String OTP );
+	
+	String deleteOTPrecord(String userName, String OTP);
 }

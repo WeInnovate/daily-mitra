@@ -4,7 +4,7 @@ public class IdGenerator {
 
 	private final static String itemPrefix = "ITM";
 
-	private IdGenerator() {
+	public IdGenerator() {
 	}
 
 	public static String getItemId() {
