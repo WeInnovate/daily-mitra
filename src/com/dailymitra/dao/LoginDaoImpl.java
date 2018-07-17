@@ -8,13 +8,11 @@ import java.sql.Statement;
 
 import com.dailymitra.constant.LoginStatusConstant;
 import com.dailymitra.dao.util.DbUtil;
-import com.oracle.xmlns.internal.webservices.jaxws_databinding.ExistingAnnotationsType;
 
 public class LoginDaoImpl implements LoginDao {
 
 	String loginInsertQuery = "INSERT INTO DM_LOGIN VALUES(?, ?, ?)";
 	String otpInsertQuery = "INSERT INTO DM_OTP VALUES(?, ?)";
-	String deleteOTPQuery = "DELETE FROM DM_OTP WHERE USERNAME = ?";
 
 	@Override
 	public String saveLogin(String userName, String password, String status) {
@@ -81,11 +79,13 @@ public class LoginDaoImpl implements LoginDao {
 
 	@Override
 	public String saveOTP(String userName, String OTP) {
-
 		try (Connection con = DbUtil.getConnection(); PreparedStatement pstmt = con.prepareStatement(otpInsertQuery)) {
 			pstmt.setString(1, userName);
 			pstmt.setString(2, OTP);
-
+			int i = pstmt.executeUpdate();
+			if (i > 0) {
+				System.out.println("inside LoginDaoImpl.saveOTP :Success");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -111,7 +111,7 @@ public class LoginDaoImpl implements LoginDao {
 				Statement stmt = con.createStatement()) {
 			int i = stmt.executeUpdate("DELETE FROM DM_OTP WHERE userName = '" + userName + "' ");
 			if (i > 0) {
-				System.out.println(i + " OTP deleted successfully.");
+				System.out.println(" OTP record deleted successfully.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

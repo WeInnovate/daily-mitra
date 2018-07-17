@@ -1,5 +1,7 @@
 package com.dailymitra.util;
 
+import java.util.Random;
+
 public class IdGenerator {
 
 	private final static String itemPrefix = "ITM";
@@ -12,7 +14,11 @@ public class IdGenerator {
 	}
 
 	public static String getOtp() {
-		return ((int) Math.random() * 10000) + "";
+		//return ((int) Math.random() * 10000) + "";
+		Random rnd = new Random();
+		String otp = rnd.nextInt(10000) + ""; 
+		System.out.println(otp);
+		return otp;
 	}
 
 }
