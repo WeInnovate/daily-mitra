@@ -13,6 +13,7 @@ import com.oracle.xmlns.internal.webservices.jaxws_databinding.ExistingAnnotatio
 public class LoginDaoImpl implements LoginDao {
 
 	String loginInsertQuery = "INSERT INTO DM_LOGIN VALUES(?, ?, ?)";
+	String otpInsertQuery = "INSERT INTO DM_OTP VALUES(?, ?)";
 
 	@Override
 	public String saveLogin(String userName, String password, String status) {
@@ -75,5 +76,32 @@ public class LoginDaoImpl implements LoginDao {
 			}
 		}
 		return retVal;
+	}
+
+	@Override
+	public String saveOTP(String userName, String OTP) {
+
+		try (Connection con = DbUtil.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(otpInsertQuery)) {
+			pstmt.setString(1, userName);
+			pstmt.setString(2, OTP);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public boolean verifyOTP(String userName, String OTP) {
+		try (Connection con = DbUtil.getConnection(); Statement stmt = con.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT OTP FROM DM_OTP WHERE USERNAME = '" + userName + "'");
+			rs.next();
+			int i = rs.getInt(1);
+			return (i > 0) ? true : false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

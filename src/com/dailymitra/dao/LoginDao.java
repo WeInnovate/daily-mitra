@@ -10,4 +10,10 @@ public interface LoginDao {
 	
 	String checkLogin(String userName, String password);
 	
+	String saveOTP(String userName, String OTP);
+	
+	boolean verifyOTP(String userName, String OTP);
+	
+	//delete OTP
+	
 }

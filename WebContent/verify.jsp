@@ -86,9 +86,8 @@
 						<div class="form">
 							<h2>Login to your account</h2>
 							<i>${requestScope.msg}</i>
-							<form action="login" method="post">
-								<input type="text" name="username" placeholder="Enter Username"
-									required=" "> <input type="text" name="otp"
+							<form action="customers/verify" method="post">
+								<input type="text" name="otp"
 									placeholder="Enter OTP" required=" "> 
 									<input type="submit" value="Verify">
 							</form>
