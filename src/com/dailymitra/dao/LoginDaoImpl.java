@@ -109,7 +109,7 @@ public class LoginDaoImpl implements LoginDao {
 	public String deleteOTPrecord(String userName, String OTP) {
 		try (Connection con = DbUtil.getConnection();
 				Statement stmt = con.createStatement()) {
-			int i = stmt.executeUpdate("DELETE FROM DM_OTP WHERE OTP = '" + OTP + "' ");
+			int i = stmt.executeUpdate("DELETE FROM DM_OTP WHERE userName = '" + userName + "' ");
 			if (i > 0) {
 				System.out.println(i + " OTP deleted successfully.");
 			}
