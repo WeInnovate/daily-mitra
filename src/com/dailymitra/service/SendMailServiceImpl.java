@@ -1,6 +1,8 @@
 package com.dailymitra.service;
 
+import java.util.Locale;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -11,6 +13,27 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class SendMailServiceImpl implements SendMailService {
+	
+	private static ResourceBundle mailResource;
+
+	private static String fromAddrr;
+
+	private static String userName;
+
+	private static String password;
+
+
+
+	static {
+		mailResource = ResourceBundle.getBundle("com//dailymitra//service//mail", Locale.US);
+		fromAddrr = mailResource.getString("from");
+		userName = mailResource.getString("username");
+		password = mailResource.getString("password");
+	}
+	
+	
+	
+	
 
 	@Override
 	public void sendMail(String toAddrr, String subject, String body) {
@@ -24,10 +47,6 @@ public class SendMailServiceImpl implements SendMailService {
 
 	@Override
 	public void sendMail(String toAddrr, String ccAddrr, String bccAddrr, String subject, String body) {
-//		TODO fetch this from properties file
-		String fromAddrr = "contact.dailymitra@gmail.com";
-		String userName = "contact.dailymitra@gmail.com";
-		String password = "Weln@mitra";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
