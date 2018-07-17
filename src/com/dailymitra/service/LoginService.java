@@ -13,4 +13,6 @@ public interface LoginService {
 	String saveOTP (String userName,String OTP );
 	
 	boolean verifyOTP (String userName,String OTP );
+	
+	String deleteOTPrecord(String userName, String OTP);
 }

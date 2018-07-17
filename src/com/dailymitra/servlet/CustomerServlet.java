@@ -16,7 +16,7 @@ import com.dailymitra.util.IdGenerator;
 @WebServlet("/customers/*")
 public class CustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static String OTP = IdGenerator.getOtp();
+	
 
 	public CustomerServlet() {
 		super();
@@ -32,6 +32,7 @@ public class CustomerServlet extends HttpServlet {
 		String uri = request.getRequestURI();
 		String userName = request.getParameter("username");
 		LoginService loginService = new LoginServieImpl();
+		String OTP = IdGenerator.getOtp();
 
 		if (uri.contains("save")) {
 			System.out.println("Save is happening");
@@ -65,6 +66,7 @@ public class CustomerServlet extends HttpServlet {
 			// say invalid OTP msg
 			if (loginService.verifyOTP(userName, OTP)) {
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
+				loginService.deleteOTPrecord(userName, OTP);
 			} else {
 				System.out.println("Invalid");
 				request.setAttribute("msg", "Invalid OTP,\n Please Enter correct OTP");

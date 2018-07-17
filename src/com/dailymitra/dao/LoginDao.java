@@ -14,6 +14,6 @@ public interface LoginDao {
 	
 	boolean verifyOTP(String userName, String OTP);
 	
-	//delete OTP
+	String deleteOTPrecord(String userName, String OTP);
 	
 }

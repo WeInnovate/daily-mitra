@@ -41,4 +41,9 @@ public class LoginServieImpl implements LoginService {
 		return loginDao.verifyOTP(userName, OTP);
 	}
 
+	@Override
+	public String deleteOTPrecord(String userName, String OTP) {
+		return loginDao.deleteOTPrecord(userName,OTP);
+	}
+
 }
