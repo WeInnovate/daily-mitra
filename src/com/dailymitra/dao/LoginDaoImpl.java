@@ -95,10 +95,13 @@ public class LoginDaoImpl implements LoginDao {
 	@Override
 	public boolean verifyOTP(String userName, String OTP) {
 		try (Connection con = DbUtil.getConnection(); Statement stmt = con.createStatement()) {
-			ResultSet rs = stmt.executeQuery("SELECT OTP FROM DM_OTP WHERE USERNAME = '" + userName + "'");
-			rs.next();
-			int i = rs.getInt(1);
-			return (i > 0) ? true : false;
+			ResultSet rs = stmt.executeQuery(
+					"SELECT OTP FROM DM_OTP WHERE USERNAME = '" + userName + "' AND OTP = '" + OTP + "' ");
+			if (rs.next()) {
+				int i = rs.getInt(1);
+				return (i > 0) ? true : false;
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -111,7 +114,7 @@ public class LoginDaoImpl implements LoginDao {
 				Statement stmt = con.createStatement()) {
 			int i = stmt.executeUpdate("DELETE FROM DM_OTP WHERE userName = '" + userName + "' ");
 			if (i > 0) {
-				System.out.println(" OTP record deleted successfully.");
+				System.out.println("OTP record deleted successfully.");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
