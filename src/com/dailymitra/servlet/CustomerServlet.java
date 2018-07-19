@@ -56,6 +56,7 @@ public class CustomerServlet extends HttpServlet {
 			String userName = request.getParameter("username");
 			if (loginService.verifyOTP(userName, OTP)) {
 				System.out.println("Verify OTP success !");
+				request.setAttribute("userName", userName);
 				request.getRequestDispatcher("/index.jsp").forward(request, response);
 				loginService.deleteOTPrecord(userName, OTP);
 			} else {

@@ -97,7 +97,8 @@
 		<ul>
 			<li><i class="fa fa-home" aria-hidden="true"></i><a
 				href="index.jsp">Home</a><span>|</span></li>
-			<li>Sign In & Sign Up</li>
+			<li>Sign In & Sign Up<span>|</span></li>
+			<li>Welcome ${requestScope.userName}</li>
 		</ul>
 	</div>
 </div>
