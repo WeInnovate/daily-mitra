@@ -13,6 +13,7 @@ public class LoginDaoImpl implements LoginDao {
 
 	String loginInsertQuery = "INSERT INTO DM_LOGIN VALUES(?, ?, ?)";
 	String otpInsertQuery = "INSERT INTO DM_OTP VALUES(?, ?)";
+	private static final String UPDATE_LOGIN_STATUS_QUERY = "UPDATE DM_LOGIN SET STATUS = ? WHERE USERNAME = ?";
 
 	@Override
 	public String saveLogin(String userName, String password, String status) {
@@ -110,8 +111,7 @@ public class LoginDaoImpl implements LoginDao {
 
 	@Override
 	public String deleteOTPrecord(String userName, String OTP) {
-		try (Connection con = DbUtil.getConnection();
-				Statement stmt = con.createStatement()) {
+		try (Connection con = DbUtil.getConnection(); Statement stmt = con.createStatement()) {
 			int i = stmt.executeUpdate("DELETE FROM DM_OTP WHERE userName = '" + userName + "' ");
 			if (i > 0) {
 				System.out.println("OTP record deleted successfully.");
@@ -121,5 +121,17 @@ public class LoginDaoImpl implements LoginDao {
 		}
 
 		return null;
+	}
+
+	@Override
+	public int updateLoginStatus(String userName, String updatedStatus) {
+		try (Connection con = DbUtil.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(UPDATE_LOGIN_STATUS_QUERY)) {
+			pstmt.setString(1, updatedStatus);
+			pstmt.setString(2, userName);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+		}
+		return 0;
 	}
 }

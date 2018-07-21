@@ -16,4 +16,6 @@ public interface LoginDao {
 	
 	String deleteOTPrecord(String userName, String OTP);
 	
+	int updateLoginStatus(String userName, String updatedStatus);
+	
 }

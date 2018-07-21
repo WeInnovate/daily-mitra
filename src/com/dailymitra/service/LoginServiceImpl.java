@@ -3,17 +3,17 @@ package com.dailymitra.service;
 import com.dailymitra.dao.LoginDao;
 import com.dailymitra.dao.LoginDaoImpl;
 
-public class LoginServieImpl implements LoginService {
+public class LoginServiceImpl implements LoginService {
 	
 	private LoginDao loginDao;
 
-	public LoginServieImpl() {
+	public LoginServiceImpl() {
 		this.loginDao = new LoginDaoImpl();
 	}
 
 	@Override
 	public String saveLogin(String userName, String password, String status) {
-		return null;
+		return loginDao.saveLogin(userName, password, status);
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class LoginServieImpl implements LoginService {
 
 	@Override
 	public boolean isExistingUser(String userName) {
-		return false;
+		return loginDao.isExistingUser(userName);
 	}
 
 	@Override
@@ -44,6 +44,11 @@ public class LoginServieImpl implements LoginService {
 	@Override
 	public String deleteOTPrecord(String userName, String OTP) {
 		return loginDao.deleteOTPrecord(userName,OTP);
+	}
+
+	@Override
+	public int updateLoginStatus(String userName, String updatedStatus) {
+		return loginDao.updateLoginStatus(userName, updatedStatus);
 	}
 
 }

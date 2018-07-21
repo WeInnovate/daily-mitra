@@ -15,4 +15,6 @@ public interface LoginService {
 	boolean verifyOTP (String userName,String OTP );
 	
 	String deleteOTPrecord(String userName, String OTP);
+	
+	int updateLoginStatus(String userName, String updatedStatus);
 }

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dailymitra.constant.LoginStatusConstant;
 import com.dailymitra.service.LoginService;
-import com.dailymitra.service.LoginServieImpl;
+import com.dailymitra.service.LoginServiceImpl;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
@@ -20,7 +20,7 @@ public class LoginServlet extends HttpServlet {
 	private LoginService loginService;
 
 	public LoginServlet() {
-		this.loginService = new LoginServieImpl();
+		this.loginService = new LoginServiceImpl();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,16 +37,19 @@ public class LoginServlet extends HttpServlet {
 
 		if (status.equals(LoginStatusConstant.NON_EXISTING.getValue())) {
 			request.setAttribute("msg", "No details. \n Please signup...");
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 			rd.forward(request, response);
 		} else if (status.equals(LoginStatusConstant.EXISTING.getValue())) {
 			request.setAttribute("msg", "Wrong details. \n Please try again...");
-			RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 			rd.forward(request, response);
-		}
-		else {
+		} else if (status.equals(LoginStatusConstant.NOT_VERIFIED.getValue())) {
+			request.setAttribute("msg", "Email address is not verified yet. \n Please verify...");
+			RequestDispatcher rd = request.getRequestDispatcher("/verify.jsp");
+			rd.forward(request, response);
+		} else if (status.equals(LoginStatusConstant.VERIFIED.getValue())) {
 			request.setAttribute("userName", userName);
-			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
 		}
 	}
