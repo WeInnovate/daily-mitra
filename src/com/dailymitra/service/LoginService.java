@@ -17,4 +17,6 @@ public interface LoginService {
 	String deleteOTPrecord(String userName, String OTP);
 	
 	int updateLoginStatus(String userName, String updatedStatus);
+	
+	String recoverPassword(String userName);
 }

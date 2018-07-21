@@ -134,4 +134,17 @@ public class LoginDaoImpl implements LoginDao {
 		}
 		return 0;
 	}
+
+	@Override
+	public String recoverPassword(String userName) {
+		try (Connection con = DbUtil.getConnection(); Statement stmt = con.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT PASSWORD FROM DM_LOGIN WHERE USERNAME = '" + userName + "' ");
+			rs.next();
+			return rs.getString(1);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

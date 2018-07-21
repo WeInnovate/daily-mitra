@@ -76,7 +76,7 @@
 		<div class="w3l_banner_nav_right">
 			<!-- login -->
 			<div class="w3_login">
-				<h3>Sign In & Sign Up</h3>
+				<h3>Forgot Password</h3>
 				<div class="w3_login_module">
 					<div class="module form-module">
 						<div class="toggle">
@@ -84,30 +84,16 @@
 							<div class="tooltip">Click Me</div>
 						</div>
 						<div class="form">
-							<h2>Login to your account</h2>
+							<h2>Enter your User Name and Email</h2>
 							<i>${requestScope.msg}</i>
-							<form action="login" method="post">
+							<form action="forgotpwd" method="post">
 								<input type="text" name="username" placeholder="Enter Username"
-									required=" "> <input type="password" name="password"
-									placeholder="Enter Password" required=" "> <input
-									type="submit" value="Login">
+									required=" "><input type="email" name="email"
+									placeholder="Email Address" required=" "> <input
+									type="submit" value="Submit">
 							</form>
 						</div>
-						<div class="form">
-							<h2>Create an account</h2>
-							<form action="customers/save" method="post">
-								<input type="text" name="username" placeholder="Username"
-									required=" "> <input type="password" name="password"
-									placeholder="Password" required=" "> <input
-									type="email" name="email" placeholder="Email Address"
-									required=" "> <input type="text" name="phone"
-									placeholder="Phone Number" required=" "> <input
-									type="submit" value="Register">
-							</form>
-						</div>
-						<div class="cta">
-							<a href="login">Forgot your password?</a>
-						</div>
+						
 					</div>
 				</div>
 				<script>
