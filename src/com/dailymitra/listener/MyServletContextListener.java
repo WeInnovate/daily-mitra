@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebListener;
 
 import com.dailymitra.dao.LoginDao;
 import com.dailymitra.dao.LoginDaoImpl;
+import com.dailymitra.dao.ddl.InsertTableData;
 import com.dailymitra.dao.ddl.TableCreator;
 
 @WebListener
@@ -24,6 +25,9 @@ public class MyServletContextListener implements ServletContextListener {
 		String createTablesFilPath = context.getRealPath("WEB-INF//sql//create-tables.sql");
 		(new TableCreator()).createTable(createTablesFilPath);
 
+		String insertTableDateFilePath = context.getRealPath("WEB-INF//sql//create-base-data.sql");
+		new InsertTableData().insertDataInTable(insertTableDateFilePath);
+		
 		LoginDao loginDao = new LoginDaoImpl();
 		if (!loginDao.isExistingUser("admin")) {
 			loginDao.saveLogin("admin", "admin", "ADMIN");
