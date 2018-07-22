@@ -84,16 +84,14 @@
 							<div class="tooltip">Click Me</div>
 						</div>
 						<div class="form">
-							<h2>Enter your User Name and Email</h2>
+							<h2>Enter your Email</h2>
 							<i>${requestScope.msg}</i>
 							<form action="forgotpwd" method="post">
-								<input type="text" name="username" placeholder="Enter Username"
-									required=" "><input type="email" name="email"
-									placeholder="Email Address" required=" "> <input
-									type="submit" value="Submit">
+								<input type="email" name="email" placeholder="Email Address"
+									required=" "> <input type="submit" value="Submit">
 							</form>
 						</div>
-						
+
 					</div>
 				</div>
 				<script>

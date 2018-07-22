@@ -56,4 +56,10 @@ public class LoginServiceImpl implements LoginService {
 		return loginDao.recoverPassword(userName);
 	}
 
+	@Override
+	public String findUserName(String email) {
+	
+		return loginDao.findUserName(email);
+	}
+
 }

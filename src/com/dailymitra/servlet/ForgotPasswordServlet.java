@@ -31,9 +31,10 @@ public class ForgotPasswordServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String userName = request.getParameter("username");
 		String email = request.getParameter("email");
 		String password = null;
+		String userName = loginService.findUserName(email);
+	
 		if (loginService.isExistingUser(userName)) {
 			password = loginService.recoverPassword(userName);
 			System.out.println("password is :" + password);
@@ -43,7 +44,7 @@ public class ForgotPasswordServlet extends HttpServlet {
 		} else {
 			System.out.println("No user Found");
 			request.setAttribute("msg", "User Name Not Found.Please Try again..");
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
+			response.sendRedirect("/login.jsp");
 		}
 
 	}

@@ -147,4 +147,18 @@ public class LoginDaoImpl implements LoginDao {
 		}
 		return null;
 	}
+
+	@Override
+	public String findUserName(String email) {
+		try (Connection con = DbUtil.getConnection(); Statement stmt = con.createStatement()) {
+			ResultSet rs = stmt.executeQuery("SELECT USERNAME FROM DM_CUSTOMER WHERE EMAIL = '" + email + "' ");
+			rs.next();
+			return rs.getString(1);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 }

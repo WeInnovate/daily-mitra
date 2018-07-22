@@ -20,4 +20,6 @@ public interface LoginDao {
 	
 	String recoverPassword(String userName);
 	
+	String findUserName(String email);
+	
 }

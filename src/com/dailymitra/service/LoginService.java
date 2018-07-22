@@ -19,4 +19,6 @@ public interface LoginService {
 	int updateLoginStatus(String userName, String updatedStatus);
 	
 	String recoverPassword(String userName);
+	
+	String findUserName(String email);
 }
