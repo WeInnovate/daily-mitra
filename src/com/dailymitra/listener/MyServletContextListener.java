@@ -25,13 +25,12 @@ public class MyServletContextListener implements ServletContextListener {
 		String createTablesFilPath = context.getRealPath("WEB-INF//sql//create-tables.sql");
 		(new TableCreator()).createTable(createTablesFilPath);
 
-		String insertTableDateFilePath = context.getRealPath("WEB-INF//sql//create-base-data.sql");
-		new InsertTableData().insertDataInTable(insertTableDateFilePath);
-		
-		LoginDao loginDao = new LoginDaoImpl();
-		if (!loginDao.isExistingUser("admin")) {
-			loginDao.saveLogin("admin", "admin", "ADMIN");
+		String createBaseData = context.getInitParameter("createBaseData");
+		if (createBaseData != null && createBaseData.equalsIgnoreCase("Yes")) {
+			String insertTableDateFilePath = context.getRealPath("WEB-INF//sql//create-base-data.sql");
+			new InsertTableData().insertDataInTable(insertTableDateFilePath);
 		}
+
 	}
 
 }

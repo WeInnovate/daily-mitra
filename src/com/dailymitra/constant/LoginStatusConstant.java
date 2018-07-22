@@ -2,7 +2,7 @@ package com.dailymitra.constant;
 
 public enum LoginStatusConstant {
 
-	EXISTING("Existing"), ADMIN("Admin"), NOT_VERIFIED("Not Verified"), VERIFIED("Verified"), BLOCKED("Blocked"),
+	EXISTING("Existing"), ADMIN("ADMIN"), NOT_VERIFIED("Not Verified"), VERIFIED("Verified"), BLOCKED("Blocked"),
 	NON_EXISTING("Non Existing");
 
 	private String value;

@@ -14,6 +14,10 @@
     <param-value>Yes</param-value>
   </context-param>
   <context-param>
+    <param-name>createBaseData</param-name>
+    <param-value>no</param-value>
+  </context-param>
+  <context-param>
     <param-name>title</param-name>
     <param-value>Grocery Store | An online mitra for daily needs</param-value>
   </context-param>

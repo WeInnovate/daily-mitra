@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!-- header -->
 <div class="agileits_header">
 	<div class="w3l_offers">
@@ -23,28 +23,35 @@
 			</fieldset>
 		</form>
 	</div>
-	
+
 	<div class="w3l_header_right">
 		<ul>
 			<li class="dropdown profile_details_drop"><a href="#"
 				class="dropdown-toggle" data-toggle="dropdown"><i
-					class="fa fa-user" aria-hidden="true"></i><span class="caret">${requestScope.userName}</span></a>
+					class="fa fa-user" aria-hidden="true"></i><span class="caret">${sessionScope.userName}</span></a>
 				<div class="mega-dropdown-menu">
 					<div class="w3ls_vegetables">
 						<ul class="dropdown-menu drp-mnu">
-							<li><a href="login.jsp">Login</a></li>
-							<li><a href="login.jsp">Sign Up</a></li>
+							<c:if test="${sessionScope.userName eq null}">
+								<li><a href="login.jsp">Login</a></li>
+								<li><a href="login.jsp">Sign Up</a></li>
+							</c:if>
+							<c:if test="${sessionScope.userName ne null}">
+								<li><a href="logout">Logout</a></li>
+							</c:if>
 						</ul>
-					</div>
-				</div></li>
 		</ul>
 	</div>
-	<div class="w3l_header_right1">
-		<h2>
-			<a href="mail.jsp">Contact Us</a>
-		</h2>
-	</div>
-	<div class="clearfix"></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="w3l_header_right1">
+	<h2>
+		<a href="mail.jsp">Contact Us</a>
+	</h2>
+</div>
+<div class="clearfix"></div>
 </div>
 <!-- script-for sticky-nav -->
 <script>
