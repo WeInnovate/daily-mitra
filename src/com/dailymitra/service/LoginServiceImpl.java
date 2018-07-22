@@ -51,4 +51,9 @@ public class LoginServiceImpl implements LoginService {
 		return loginDao.updateLoginStatus(userName, updatedStatus);
 	}
 
+	@Override
+	public String recoverPassword(String userName) {
+		return loginDao.recoverPassword(userName);
+	}
+
 }

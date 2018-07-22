@@ -18,4 +18,6 @@ public interface LoginDao {
 	
 	int updateLoginStatus(String userName, String updatedStatus);
 	
+	String recoverPassword(String userName);
+	
 }

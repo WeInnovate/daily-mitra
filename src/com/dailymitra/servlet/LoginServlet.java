@@ -12,19 +12,27 @@ import javax.servlet.http.HttpServletResponse;
 import com.dailymitra.constant.LoginStatusConstant;
 import com.dailymitra.service.LoginService;
 import com.dailymitra.service.LoginServiceImpl;
+import com.dailymitra.service.SendMailService;
+import com.dailymitra.service.SendMailServiceImpl;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private LoginService loginService;
+	private SendMailService sendMailService;
 
 	public LoginServlet() {
 		this.loginService = new LoginServiceImpl();
+		this.sendMailService = new SendMailServiceImpl();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		RequestDispatcher rd = request.getRequestDispatcher("/forgotpwd.jsp");
+		rd.forward(request, response);
+
+
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

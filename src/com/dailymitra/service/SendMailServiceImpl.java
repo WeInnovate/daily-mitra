@@ -76,7 +76,7 @@ public class SendMailServiceImpl implements SendMailService {
 			}
 
 			message.setSubject(subject);
-			StringBuilder messagebody = new StringBuilder("Your OTP code to verify Daily-Mitra App is : ");
+			StringBuilder messagebody = new StringBuilder();
 			messagebody.append(body);
 			message.setText(messagebody.toString());
 
